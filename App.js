@@ -1,17 +1,19 @@
-import React from 'react';
-import { View, StatusBar, StyleSheet } from 'react-native';
-// import nommé depuis CardList.js
-import { CardList } from './components/CardList';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import Page1 from './components/page1';
+import PageA from './components/pagea';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    < View style={styles.screen}>
-      <StatusBar />
-      <CardList />
-    </ View >
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Page1">
+        <Stack.Screen name="Page1" component={Page1} options={{ title: "Essai" }} />
+        <Stack.Screen name="PageA" component={PageA} options={{ title: "Résultat" }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: '#f6f7fb' }
-});
